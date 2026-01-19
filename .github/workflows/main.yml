@@ -1,4 +1,4 @@
-name: Deploy Node App to EC2
+name: POC-4 Node Express App Deploy
 
 on:
   push:
@@ -10,20 +10,33 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      # Step 1 - Checkout repo
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-    - name: Deploy to Windows EC2
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-       host: ${{ secrets.EC2_HOST }}
-       username: ${{ secrets.EC2_USER }}
-       key: ${{ secrets.EC2_SSH_KEY }}
-       script: |
-         powershell -Command "
-         cd C:\deploy\<repo-name>
-         git pull origin main
-         npm install
-         pm2 restart node-app
-          "
+      # Step 2 - SSH into EC2 and deploy
+      - name: Deploy App to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          script: |
+            echo "Connected to EC2"
 
+            # GO to app directory
+            cd /home/ubuntu/poc4-aws-app || exit 1
+
+            # Assuming repo already exists -> do pull
+            echo "Pulling latest changes"
+            git pull origin main
+
+            echo "Installing Node Modules"
+            npm i
+
+            echo "Reloading PM2"
+
+            
+
+            echo "Deployment Completed Succesfully"
