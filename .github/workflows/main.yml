@@ -26,7 +26,7 @@ jobs:
             echo "Connected to EC2"
 
             # GO to app directory
-            cd /home/ubuntu/poc4-aws-app || exit 1
+            cd /home/ubuntu/poc4-app-new || exit 1
 
             # Assuming repo already exists -> do pull
             echo "Pulling latest changes"
