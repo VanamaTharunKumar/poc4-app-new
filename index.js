@@ -3,6 +3,7 @@ const app = express();
 
 app.get("/", (req, res) => {
   res.send("Hello from  Windows EC2 via CI/CD ");
+
 });
 
 app.listen(3000, () => {
