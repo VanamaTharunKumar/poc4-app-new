@@ -37,6 +37,6 @@ jobs:
 
             echo "Reloading PM2"
 
-            pm2 start index.js 
+            pm2 reload index.js 
 
             echo "Deployment Completed Succesfully"
