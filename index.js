@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Hello from Windows EC2 via CI/CD ");
+  res.send("Hello from Windows EC2 via CI/CD(POC-2) ");
 });
 
 app.listen(3000, () => {
