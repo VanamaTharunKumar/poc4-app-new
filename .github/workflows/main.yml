@@ -37,6 +37,6 @@ jobs:
 
             echo "Reloading PM2"
 
-            pm2 reload index.js 
-
+            #pm2 reload index.js 
+            pm2 start index.js --name poc4-app-new || pm2 restart poc4-app-new
             echo "Deployment Completed Succesfully"
