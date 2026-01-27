@@ -3,7 +3,7 @@ const app = express();
 
 app.get("/", (req, res) => {
 
-  res.send("Hello from Windows EC2 via CI/CD (POC-2) ");
+  res.send("Hello from Windows EC2 via CI/CD(POC-2) ");
   
 });
 
